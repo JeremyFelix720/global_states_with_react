@@ -1,4 +1,4 @@
-export default function Brother(props: {familyName: string}) {
+export default function Brother(props: {fatherFamilyName: string}) {
   // ETATS
 
   // COMPORTEMENTS
@@ -6,9 +6,11 @@ export default function Brother(props: {familyName: string}) {
   // AFFICHAGE
   return (
     <>
-      <h4>
-        Nom du frère : {props.familyName}
-      </h4>
+      <section className="memberBlocks">
+        <h4>
+          Nom du frère : {props.fatherFamilyName} DENLEDO
+        </h4>
+      </section>
     </>
   )
 }

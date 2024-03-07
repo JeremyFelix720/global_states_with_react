@@ -1,5 +1,8 @@
 # Les état globaux
 
+Correction de Thomas :
+https://github.com/ThomasLaforge/global-state
+
 ## Objectifs
 
 Pour ce dernier cours de l'année lié à des notions présentes dans le programme du titre CDA, nous allons aborder les états globaux.  
