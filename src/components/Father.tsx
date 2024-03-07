@@ -1,6 +1,6 @@
 import Brother from "./Brother";
 
-export default function Father(props: {grandfatherFamilyName: string}) {
+export default function Father(props: {grandfatherFamilyName: string, updateFamilyName: (newFamilyName: string) => void}) {
   // ETATS
 
   // COMPORTEMENTS
@@ -11,7 +11,10 @@ export default function Father(props: {grandfatherFamilyName: string}) {
       <section className="memberBlocks">
         <h4>
           Nom du père : {props.grandfatherFamilyName} DENLEDO
-          <Brother fatherFamilyName={props.grandfatherFamilyName} />
+          <Brother
+            fatherFamilyName={props.grandfatherFamilyName}
+            updateFamilyName={props.updateFamilyName}
+          />
         </h4>
       </section>
     </>

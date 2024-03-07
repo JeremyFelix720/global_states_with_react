@@ -13,7 +13,10 @@ export default function App() {
   return (
     <>
       <h1>Héritage du prénom unique de la famille DENLEDO : {familyName}</h1>
-      <GreatGrandfather familyName={familyName} />
+      <GreatGrandfather
+        familyName={familyName}
+        updateFamilyName={setFamilyName}
+      />
     </>
   )
 }

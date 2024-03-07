@@ -1,6 +1,6 @@
 import Grandfather from "./GrandFather";
 
-export default function GreatGrandfather(props: {familyName: string}) {
+export default function GreatGrandfather(props: {familyName: string, updateFamilyName: (newFamilyName: string) => void}) {
   // ETATS
 
   // COMPORTEMENTS
@@ -11,7 +11,10 @@ export default function GreatGrandfather(props: {familyName: string}) {
       <section className="memberBlocks">
         <h4>
           Nom de l'arrière grand-père : {props.familyName} DEDENLEDO
-          <Grandfather greatGrandfatherFamilyName={props.familyName} />
+          <Grandfather
+            greatGrandfatherFamilyName={props.familyName}
+            updateFamilyName={props.updateFamilyName}
+          />
         </h4>
       </section>
     </>
