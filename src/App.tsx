@@ -1,13 +1,18 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import './App.css'
 import GreatGrandfather from "./components/GreatGrandfather.tsx";
+
+const initialFamilyName = "Geoffrey"
 
 export default function App() {
 
   // ETATS
-  const [familyName, setFamilyName] = useState("Geoffrey");
+  const [familyName, setFamilyName] = useState(initialFamilyName);
 
   // COMPORTEMENTS
+  const resetFamilyName = useCallback(() => {
+    setFamilyName(initialFamilyName);
+  }, [])
 
   // AFFICHAGE
   return (
@@ -17,6 +22,7 @@ export default function App() {
         familyName={familyName}
         updateFamilyName={setFamilyName}
       />
+      <button onClick={resetFamilyName}>Réassigner le prénom originel : {initialFamilyName}</button>
     </>
   )
 }
