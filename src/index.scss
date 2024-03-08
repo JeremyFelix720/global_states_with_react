@@ -69,6 +69,9 @@ button:focus-visible {
 
 /* CSS PERSO */
 
+$black: #303030;
+$white: #F5F5F5;
+
 h1 {
   font-size: 42px;
 }
@@ -85,8 +88,64 @@ h4 {
   font-size: 24px;
 }
 
-.memberBlocks {
-  border: 2px solid grey;
-  margin: 5px;
+body, html, #root {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
   padding: 10px;
+  //border: 3px solid blue;
+}
+
+.card {
+  width: 200px;
+  height: 300px;
+  border-radius: 10px;
+  margin: auto;
+  padding: 10px;
+  //border: 3px solid red;
+}
+
+.button {
+  width: 100%;
+  height: 50px;
+  border-radius: 10px;
+  margin: 10px auto;
+  padding: 10px;
+  //border: 3px solid purple;
+}
+
+.light {
+  .container {
+    background-color: $white;
+    color: $black;
+  }
+  .card {
+    background-color: $black;
+    color: $white;
+  }
+  .button {
+    background-color: $white;
+    color: $black;
+  }
+}
+
+.dark {
+  .container {
+    background-color: $black;
+    color: $white;
+  }
+  .card {
+    background-color: $white;
+    color: $black;
+  }
+  .button {
+    background-color: $black;
+    color: $white;
+  }
 }

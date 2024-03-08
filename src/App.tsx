@@ -1,38 +1,34 @@
 import { create } from 'zustand'
-import './App.css'
-import GreatGrandfather from "./components/GreatGrandfather.tsx";
-import { useCallback } from 'react';
+import './App.scss'
+import Contener from './components/Contener';
 
-const initialFamilyName = "Geoffrey"
+const defaultTheme = "light"
 
-interface FamilyState {
-  familyName: string
-  setFamilyName: (newFamilyName: string) => void
+type ThemeValue = "light" | "dark"
+
+interface ThemeState {
+  theme: ThemeValue
+  setTheme: (newTheme: ThemeValue) => void
 }
 
-export const useFamilyStore = create<FamilyState>()((set) => ({
-  familyName: initialFamilyName,
-  setFamilyName: (newFamilyName) => set(() => ({ familyName: newFamilyName })),
+export const useThemeStore = create<ThemeState>()((set) => ({
+  theme: defaultTheme,
+  setTheme: (newTheme : ThemeValue) => set(() => ({ theme: newTheme })),
 }))
 
 export default function App() {
 
   // ETATS
-  const familyName = useFamilyStore().familyName;
-  const updateFamilyName = useFamilyStore().setFamilyName;
+  const theme = useThemeStore().theme
+  // const updateTheme = useThemeStore().setTheme;
   
   // COMPORTEMENTS
-  const resetFamilyName = useCallback(() => {
-    updateFamilyName(initialFamilyName);
-  }, [])
 
   // AFFICHAGE
   return (
     <>
-      <section className="memberBlocks">
-        <h1>Héritage du prénom unique de la famille DENLEDO : {familyName}</h1>
-        <GreatGrandfather/>
-        <button onClick={resetFamilyName}>Réassigner le prénom originel : {initialFamilyName}</button>
+      <section className={theme === "light" ? "light" : "dark"}>
+        <Contener />
       </section>
     </>
   )

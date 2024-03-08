@@ -111,7 +111,7 @@ Aidez-vous de cette liste de questions pour trouver des alternatives à Context 
 
 ### Exemple pour un thème
 
-Créer une petit application avec votre outil préféré.
+Créer une petite application avec votre outil préféré.
 L'application doit permettre d'afficher un thème sombre ou clair.
 
 Pour cela, un composant Container sera créé et affichera une couleur de fond en fonction du thème choisi dans l'état global.
