@@ -1,8 +1,6 @@
 import { useContext, useState } from "react"
 import { FamilyContext } from "../App"
 
-// La props "fatherFamilyName" est transmise du composant "Father" au composant "Brother".
-// L'événement "updateFamilyName" transmet l'état "newFamilyName" de l'enfant "Brother" au parent "Father".
 export default function Brother() {
   // ETATS
   const brotherFamilyName = useContext(FamilyContext).familyName;
