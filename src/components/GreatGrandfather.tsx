@@ -1,7 +1,10 @@
+import { useContext } from "react";
+import { FamilyContext } from "../App";
 import Grandfather from "./GrandFather";
 
-export default function GreatGrandfather(props: {familyName: string, updateFamilyName: (newFamilyName: string) => void}) {
+export default function GreatGrandfather() {
   // ETATS
+  const greatGrandfatherFamilyName = useContext(FamilyContext).familyName
 
   // COMPORTEMENTS
 
@@ -10,11 +13,8 @@ export default function GreatGrandfather(props: {familyName: string, updateFamil
     <>
       <section className="memberBlocks">
         <h4>
-          Nom de l'arrière grand-père : {props.familyName} DEDENLEDO
-          <Grandfather
-            greatGrandfatherFamilyName={props.familyName}
-            updateFamilyName={props.updateFamilyName}
-          />
+          Nom de l'arrière grand-père : {greatGrandfatherFamilyName} DEDENLEDO
+          <Grandfather />
         </h4>
       </section>
     </>

@@ -1,29 +1,32 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { FamilyContext } from "../App"
 
 // La props "fatherFamilyName" est transmise du composant "Father" au composant "Brother".
 // L'événement "updateFamilyName" transmet l'état "newFamilyName" de l'enfant "Brother" au parent "Father".
-export default function Brother(props: {fatherFamilyName: string, updateFamilyName: (newFamilyName: string) => void}) {
+export default function Brother() {
   // ETATS
-  const [newFamilyName, setNewFamilyName] = useState(props.fatherFamilyName)
+  const brotherFamilyName = useContext(FamilyContext).familyName;
+  const updateFamilyName = useContext(FamilyContext).setFamilyName;
+  const [newFamilyName, setNewFamilyName] = useState(brotherFamilyName);
 
   // COMPORTEMENTS
 
   // Mise à jour de l'état "newFamilyName" du composant "Brother".
   const handleChangeFamilyName = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNewFamilyName(event.target.value)
+    setNewFamilyName(event.target.value);
   }
 
-  // Remontée de l'état "newFamilyName" dans le parent "Father" du composant "Brother". 
+  // Remontée de l'état "newFamilyName" (du composant "Brother") dans le parent lointain "App" qui contient l'état global "FamilyContext". 
   const handleUpdateFamilyName = () => {
-    props.updateFamilyName(newFamilyName)
-}
+    updateFamilyName(newFamilyName);
+  }
 
   // AFFICHAGE
   return (
     <>
       <section className="memberBlocks">
         <h4>
-          Nom du frère : {props.fatherFamilyName} DENLEDO
+          Nom du frère : {brotherFamilyName} DENLEDO
         </h4>
         <input
           type="text"
