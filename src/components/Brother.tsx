@@ -1,16 +1,14 @@
-import { useContext, useState } from "react"
-import { FamilyContext } from "../App"
+// import { useContext, useState } from "react"
+import { useState } from "react"
+import { useFamilyStore } from "../App";
 
-// La props "fatherFamilyName" est transmise du composant "Father" au composant "Brother".
-// L'événement "updateFamilyName" transmet l'état "newFamilyName" de l'enfant "Brother" au parent "Father".
 export default function Brother() {
   // ETATS
-  const brotherFamilyName = useContext(FamilyContext).familyName;
-  const updateFamilyName = useContext(FamilyContext).setFamilyName;
+  const brotherFamilyName = useFamilyStore().familyName;
+  const updateFamilyName = useFamilyStore().setFamilyName;
   const [newFamilyName, setNewFamilyName] = useState(brotherFamilyName);
 
   // COMPORTEMENTS
-
   // Mise à jour de l'état "newFamilyName" du composant "Brother".
   const handleChangeFamilyName = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNewFamilyName(event.target.value);

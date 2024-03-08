@@ -1,37 +1,39 @@
-import { createContext, useCallback, useState } from 'react'
+import { create } from 'zustand'
 import './App.css'
 import GreatGrandfather from "./components/GreatGrandfather.tsx";
+import { useCallback } from 'react';
 
 const initialFamilyName = "Geoffrey"
 
-export const FamilyContext = createContext<{
-  familyName: string,
-  setFamilyName: (familyName: string) => void,
-}>({
-  familyName: "abc",
-  setFamilyName: () => {},
-})
+interface FamilyState {
+  familyName: string
+  setFamilyName: (newFamilyName: string) => void
+}
+
+export const useFamilyStore = create<FamilyState>()((set) => ({
+  familyName: initialFamilyName,
+  setFamilyName: (newFamilyName) => set(() => ({ familyName: newFamilyName })),
+}))
 
 export default function App() {
 
   // ETATS
-  const [familyNameState, setFamilyNameState] = useState(initialFamilyName);
+  const familyName = useFamilyStore().familyName;
+  const updateFamilyName = useFamilyStore().setFamilyName;
   
   // COMPORTEMENTS
-  
   const resetFamilyName = useCallback(() => {
-    setFamilyNameState(initialFamilyName);
+    updateFamilyName(initialFamilyName);
   }, [])
-  
 
   // AFFICHAGE
   return (
     <>
-      <FamilyContext.Provider value={{familyName: familyNameState, setFamilyName: setFamilyNameState}}>
-        <h1>Héritage du prénom unique de la famille DENLEDO : {familyNameState}</h1>
+      <section className="memberBlocks">
+        <h1>Héritage du prénom unique de la famille DENLEDO : {familyName}</h1>
         <GreatGrandfather/>
         <button onClick={resetFamilyName}>Réassigner le prénom originel : {initialFamilyName}</button>
-      </FamilyContext.Provider>
+      </section>
     </>
   )
 }

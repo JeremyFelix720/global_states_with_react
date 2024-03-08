@@ -1,10 +1,9 @@
-import { useContext } from "react";
-import { FamilyContext } from "../App";
+import { useFamilyStore } from "../App";
 import Brother from "./Brother";
 
 export default function Father() {
   // ETATS
-  const fatherFamilyName = useContext(FamilyContext).familyName
+  const fatherFamilyName = useFamilyStore().familyName
 
   // COMPORTEMENTS
 

@@ -1,10 +1,9 @@
-import { useContext } from "react";
-import { FamilyContext } from "../App";
+import { useFamilyStore } from "../App";
 import Grandfather from "./GrandFather";
 
 export default function GreatGrandfather() {
   // ETATS
-  const greatGrandfatherFamilyName = useContext(FamilyContext).familyName
+  const greatGrandfatherFamilyName = useFamilyStore().familyName;
 
   // COMPORTEMENTS
 
